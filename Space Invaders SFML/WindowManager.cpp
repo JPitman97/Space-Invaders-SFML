@@ -47,7 +47,7 @@ WindowManager::WindowManager()
 		window.display();
 
 		time = clock.getElapsedTime();
-		//std::cout << 1.0f / time.asSeconds() << std::endl;
+		std::cout << 1.0f / time.asSeconds() << std::endl;
 
 		clock.restart().asSeconds();
 	}
