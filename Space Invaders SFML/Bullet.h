@@ -10,6 +10,9 @@ public:
 
 	void setTexture();
 
+	std::vector<Bullet> bulletVect;
+
+
 private:
 	float moveSpeed = 10;
 	

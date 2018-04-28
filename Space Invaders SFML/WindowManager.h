@@ -4,6 +4,7 @@
 #include "EventManager.h"
 #include "Player.h"
 #include "Bullet.h"
+#include "Enemy1.h"
 
 class WindowManager
 {
@@ -20,8 +21,7 @@ private:
 	const std::string winTitle = "Space Invaders Clone!";
 
 	sf::Texture Background;
-	sf::Sprite BackgroundSpr;
-	
+	sf::Sprite BackgroundSpr;	
 
 	sf::Clock clock;
 	sf::Time time;
@@ -29,5 +29,7 @@ private:
 
 	EventManager EM;
 	Player player;
+	Enemy1 enemy1;
+	Bullet bullet;
 };
 

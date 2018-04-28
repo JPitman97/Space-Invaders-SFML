@@ -15,7 +15,8 @@ public:
 	virtual void pollEvents() = 0; // Override this function!
 	virtual bool collisions();
 	virtual void draw(sf::RenderWindow &window);
-
+	virtual sf::Sprite getSprite() { return this->Sprite; };
+	virtual void setSpeed(int speed) { moveSpeed = speed; };
 
 protected:
 	sf::Sprite Sprite;

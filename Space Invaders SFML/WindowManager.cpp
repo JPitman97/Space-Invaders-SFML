@@ -15,7 +15,7 @@ WindowManager::WindowManager()
 	}
 	BackgroundSpr.setTexture(Background);
 
-	std::vector<Bullet> bulletVect;
+	enemy1.spawnEnemies();
 
 	while (window.isOpen())
 	{
@@ -25,29 +25,39 @@ WindowManager::WindowManager()
 		window.draw(BackgroundSpr);
 		player.pollEvents();
 		player.draw(window);
+
+		enemy1.collisions(player);
+
+		for (size_t i = 0; i < enemy1.EnemyVect.size(); i++)
+		{
+			enemy1.EnemyVect[i].draw(window);
+			enemy1.EnemyVect[i].pollEvents();
+		}
+		
 		if (player.fire)
 		{
 			Bullet newBullet;
 			newBullet.setPosition((player.getPosition().x) + 40, 700);
-			bulletVect.push_back(newBullet);
+			bullet.bulletVect.push_back(newBullet);
 			player.fire = false;
 		}
 
-		for (size_t i = 0; i < bulletVect.size(); i++)
+		for (size_t i = 0; i < bullet.bulletVect.size(); i++)
 		{
-			bulletVect[i].setTexture();
-			bulletVect[i].draw(window);
-			bulletVect[i].pollEvents();
-			if (bulletVect[i].collisions())
+			bullet.bulletVect[i].setTexture();
+			bullet.bulletVect[i].draw(window);
+			bullet.bulletVect[i].pollEvents();
+
+			if (enemy1.collisions(bullet.bulletVect[i]) || bullet.bulletVect[i].collisions())
 			{
-				bulletVect.erase(bulletVect.begin() + i);
+				bullet.bulletVect.erase(bullet.bulletVect.begin() + i);
 			}
 		}
-		
+
 		window.display();
 
 		time = clock.getElapsedTime();
-		std::cout << 1.0f / time.asSeconds() << std::endl;
+		//std::cout << 1.0f / time.asSeconds() << std::endl;
 
 		clock.restart().asSeconds();
 	}
