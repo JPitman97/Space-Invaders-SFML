@@ -22,13 +22,21 @@ void Player::pollEvents()
 	{
 		Sprite.move(-moveSpeed, 0.f);
 	}
-
-	/*else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		fire = true;
-	}*/
-
 	collisions();
+}
+
+void Player::playerWin()
+{
+	std::cout << "WINNER!!!!!" << std::endl;
+	setSpeed(0);
+	gameOver = true;
+}
+
+void Player::playerLose()
+{
+	std::cout << "LOSER!!!!!" << std::endl;
+	setSpeed(0);
+	gameOver = true;
 }
 
 Player::~Player()

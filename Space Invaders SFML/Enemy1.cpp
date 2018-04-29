@@ -1,7 +1,5 @@
 #include "Enemy1.h"
 
-
-
 Enemy1::Enemy1()
 {
 	init("Assets/Enemy1.png");
@@ -14,7 +12,7 @@ void Enemy1::spawnEnemies()
 	for (int i = 0; i < 5; i++)
 	{
 		Enemy1 enemy;
-		enemy.setPosition(85 * enemypos, 0);
+		enemy.setPosition(85.f * enemypos, 0.f);
 		EnemyVect.push_back(enemy);
 		++enemypos;
 		++enemiesRemaining;
@@ -25,7 +23,7 @@ void Enemy1::spawnEnemies()
 	for (int i = 0; i < 5; i++)
 	{
 		Enemy1 enemy;
-		enemy.setPosition(85 * enemypos, 100);
+		enemy.setPosition(85.f * enemypos, 100.f);
 		EnemyVect.push_back(enemy);
 		++enemypos;
 		++enemiesRemaining;
@@ -52,7 +50,7 @@ void Enemy1::pollEvents()
 	Sprite.move(0.f, fallSpeed);
 }
 
-bool Enemy1::collisions(Bullet& bullet)
+bool Enemy1::Objectcollisions(Bullet& bullet, AudioManager& Audio, Player& player)
 {
 	for (size_t i = 0; i < EnemyVect.size(); i++)
 	{
@@ -60,11 +58,14 @@ bool Enemy1::collisions(Bullet& bullet)
 		if (EnemyVect[i].Sprite.getGlobalBounds().intersects(rect))
 		{
 			std::cout << "BULLET HIT!!!" << std::endl;
+
+			Audio.playDeathSound();
+
 			EnemyVect.erase(EnemyVect.begin() + i);
 			for (size_t i = 0; i < EnemyVect.size(); i++)
 			{
 				EnemyVect[i].setTexture();
-				EnemyVect[i].fallSpeed += 0.5f;
+				EnemyVect[i].fallSpeed += 0.2f;
 			}
 			--enemiesRemaining;
 
@@ -73,7 +74,7 @@ bool Enemy1::collisions(Bullet& bullet)
 
 			if (enemiesRemaining == 0)
 			{
-				std::cout << "WINNER!!!!!" << std::endl;
+				player.playerWin();
 			}
 			return true;
 		}
@@ -81,14 +82,13 @@ bool Enemy1::collisions(Bullet& bullet)
 	return false;
 }
 
-bool Enemy1::collisions(Player& player)
+bool Enemy1::Objectcollisions(Player& player, AudioManager& Audio)
 {
 	for (size_t i = 0; i < EnemyVect.size(); i++)
 	{
 		sf::FloatRect rect = player.getSprite().getGlobalBounds();
 		if (EnemyVect[i].Sprite.getGlobalBounds().intersects(rect))
 		{
-			std::cout << "PLAYER HIT!!!" << std::endl;
 			EnemyVect.erase(EnemyVect.begin() + i);
 			for (size_t i = 0; i < EnemyVect.size(); i++)
 			{
@@ -96,15 +96,9 @@ bool Enemy1::collisions(Player& player)
 			}
 			--enemiesRemaining;
 
-			player.setSpeed(0);
-
 			std::cout << enemiesRemaining << std::endl;
 
-
-			if (enemiesRemaining == 0)
-			{
-				std::cout << "WINNER!!!!!" << std::endl;
-			}
+			player.playerLose();
 			return true;
 		}
 	}

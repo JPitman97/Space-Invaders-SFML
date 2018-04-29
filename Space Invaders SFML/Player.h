@@ -10,7 +10,11 @@ public:
 	Player();
 	~Player();
 
+	void playerWin();
+	void playerLose();
+
 	bool fire = false;
+	bool gameOver = false;
 	void pollEvents() override;
 
 private:

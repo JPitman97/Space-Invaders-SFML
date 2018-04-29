@@ -40,21 +40,27 @@ bool EntityManager::collisions()
 {
 	if (Sprite.getPosition().x <= 0) // Left side collision?
 	{
-		std::cout << "Hitting the edge!" << std::endl;
+		std::cout << "Hitting the left edge!" << std::endl;
 		Sprite.move(+5.0, 0.0);
 		return true;
 	}
 	
-	if (Sprite.getPosition().x + Sprite.getLocalBounds().width >= 705) //Right side collision?
+	if (Sprite.getPosition().x + Sprite.getLocalBounds().width >= 727) //Right side collision?
 	{
-		std::cout << "Hitting the edge!" << std::endl;
+		std::cout << "Hitting the right edge!" << std::endl;
 		Sprite.move(-5.0, 0.0);
 		return true;
 	} 
 
-	if (Sprite.getPosition().y <= 0) //Top Collision?
+	if (Sprite.getPosition().y <= -10) //Top Collision?
 	{
 		std::cout << "Hitting the top!" << std::endl;
+		return true;
+	}
+
+	if (Sprite.getPosition().y >= 750) //Bottom Collision?
+	{
+		std::cout << "Hitting the bottom!" << std::endl;
 		return true;
 	}
 

@@ -2,6 +2,9 @@
 #include "EntityManager.h"
 #include "Bullet.h"
 #include "Player.h"
+#include "AudioManager.h"
+#include <ctime>    
+#include <cstdlib>
 
 class Enemy1 : public EntityManager
 {
@@ -9,14 +12,15 @@ public:
 	Enemy1();
 
 	void pollEvents() override;
+	
 
 	void spawnEnemies();
 
 	void setTexture();
 
-	bool collisions(Bullet& bullet);
+	bool Objectcollisions(Bullet& bullet, AudioManager& Audio, Player& player);
 
-	bool collisions(Player& player);
+	bool Objectcollisions(Player& player, AudioManager& Audio);
 
 	~Enemy1();
 
@@ -24,6 +28,8 @@ public:
 
 	int enemiesRemaining;
 	int enemypos = 1;
-	float fallSpeed = 0.3f;
+	float fallSpeed = 0.0f;
+
+	bool hasFired = false;
 };
 

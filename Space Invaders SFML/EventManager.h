@@ -9,6 +9,7 @@ public:
 	~EventManager();
 
 	void pollEvents(sf::RenderWindow &window, Player& player);
+
 private:
 	sf::Event event;
 };

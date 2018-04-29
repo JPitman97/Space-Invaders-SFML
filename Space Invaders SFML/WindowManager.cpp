@@ -1,8 +1,8 @@
 #include "WindowManager.h"
 
-
 WindowManager::WindowManager()
 {
+
 	std::cout << "Window Manager Constructor Running" << std::endl;
 
 	window.create(sf::VideoMode(winWidth, winHeight), winTitle, sf::Style::Close);
@@ -17,6 +17,7 @@ WindowManager::WindowManager()
 
 	enemy1.spawnEnemies();
 
+
 	while (window.isOpen())
 	{
 		EM.pollEvents(window, player);
@@ -26,19 +27,28 @@ WindowManager::WindowManager()
 		player.pollEvents();
 		player.draw(window);
 
-		enemy1.collisions(player);
+		enemy1.Objectcollisions(player, Audio);
 
 		for (size_t i = 0; i < enemy1.EnemyVect.size(); i++)
 		{
 			enemy1.EnemyVect[i].draw(window);
 			enemy1.EnemyVect[i].pollEvents();
+			if (enemy1.EnemyVect[i].collisions())
+			{
+				enemy1.EnemyVect.erase(enemy1.EnemyVect.begin() + i);
+				if (enemy1.EnemyVect.empty())
+				{
+					player.playerLose();
+				}
+			}
 		}
-		
+
 		if (player.fire)
 		{
 			Bullet newBullet;
 			newBullet.setPosition((player.getPosition().x) + 40, 700);
 			bullet.bulletVect.push_back(newBullet);
+			Audio.playShotSound();
 			player.fire = false;
 		}
 
@@ -48,7 +58,7 @@ WindowManager::WindowManager()
 			bullet.bulletVect[i].draw(window);
 			bullet.bulletVect[i].pollEvents();
 
-			if (enemy1.collisions(bullet.bulletVect[i]) || bullet.bulletVect[i].collisions())
+			if (enemy1.Objectcollisions(bullet.bulletVect[i], Audio, player) || bullet.bulletVect[i].collisions())
 			{
 				bullet.bulletVect.erase(bullet.bulletVect.begin() + i);
 			}
@@ -62,7 +72,6 @@ WindowManager::WindowManager()
 		clock.restart().asSeconds();
 	}
 }
-
 
 WindowManager::~WindowManager()
 {

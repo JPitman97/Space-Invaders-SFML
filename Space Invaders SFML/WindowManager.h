@@ -5,6 +5,9 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Enemy1.h"
+#include "AudioManager.h"
+#include <ctime>    
+#include <cstdlib>
 
 class WindowManager
 {
@@ -31,5 +34,7 @@ private:
 	Player player;
 	Enemy1 enemy1;
 	Bullet bullet;
+	AudioManager Audio;
+
 };
 

@@ -26,6 +26,7 @@ void Bullet::pollEvents()
 	Sprite.move(0.f, -moveSpeed);
 }
 
+
 Bullet::~Bullet()
 {
 }

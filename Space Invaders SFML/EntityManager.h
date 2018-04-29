@@ -16,7 +16,7 @@ public:
 	virtual bool collisions();
 	virtual void draw(sf::RenderWindow &window);
 	virtual sf::Sprite getSprite() { return this->Sprite; };
-	virtual void setSpeed(int speed) { moveSpeed = speed; };
+	virtual void setSpeed(float speed) { moveSpeed = speed; };
 
 protected:
 	sf::Sprite Sprite;
