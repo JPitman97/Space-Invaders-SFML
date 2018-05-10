@@ -3,6 +3,7 @@
 #include "EntityManager.h"
 #include <iostream>
 #include "Bullet.h"
+#include "stateManager.h"
 
 class Player : public EntityManager
 {
@@ -14,7 +15,6 @@ public:
 	void playerLose();
 
 	bool fire = false;
-	bool gameOver = false;
 	void pollEvents() override;
 
 private:

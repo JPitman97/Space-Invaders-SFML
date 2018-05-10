@@ -23,9 +23,10 @@ void EventManager::pollEvents(sf::RenderWindow &window, Player& player)
 		case sf::Event::KeyPressed:
 			if (event.key.code == sf::Keyboard::Escape)
 			{
-				std::cout << "Escape!" << std::endl;
+				std::cout << "Closing!" << std::endl;
+				window.close();
 			}
-			if (event.key.code == sf::Keyboard::Space && player.gameOver != true)
+			if (event.key.code == sf::Keyboard::Space)
 			{
 				player.fire = true;
 			}

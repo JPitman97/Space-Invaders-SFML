@@ -6,8 +6,10 @@
 #include "Bullet.h"
 #include "Enemy1.h"
 #include "AudioManager.h"
+#include "stateManager.h"
 #include <ctime>    
 #include <cstdlib>
+#include <sstream>
 
 class WindowManager
 {
@@ -24,7 +26,18 @@ private:
 	const std::string winTitle = "Space Invaders Clone!";
 
 	sf::Texture Background;
-	sf::Sprite BackgroundSpr;	
+	sf::Sprite BackgroundSpr;
+	sf::Texture MenuBackground;
+	sf::Sprite MenuBackgroundSpr;
+	sf::Texture WinBackground;
+	sf::Sprite WinBackgroundSpr;
+	sf::Texture LossBackground;
+	sf::Sprite LossBackgroundSpr;
+
+	sf::Font font;
+	sf::Text text;
+	std::stringstream tempString;
+	std::string enemiesUiTxt;
 
 	sf::Clock clock;
 	sf::Time time;
@@ -35,6 +48,5 @@ private:
 	Enemy1 enemy1;
 	Bullet bullet;
 	AudioManager Audio;
-
 };
 

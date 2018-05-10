@@ -33,6 +33,8 @@ void Enemy1::spawnEnemies()
 	{
 		EnemyVect[i].setTexture();
 	}
+
+	enemypos = 1;
 }
 
 void Enemy1::setTexture()

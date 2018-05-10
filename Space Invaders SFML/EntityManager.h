@@ -13,7 +13,7 @@ public:
 	virtual sf::Vector2f getPosition();
 	virtual void setScale(float x, float y);
 	virtual void pollEvents() = 0; // Override this function!
-	virtual bool collisions();
+	virtual bool windowCollisions();
 	virtual void draw(sf::RenderWindow &window);
 	virtual sf::Sprite getSprite() { return this->Sprite; };
 	virtual void setSpeed(float speed) { moveSpeed = speed; };

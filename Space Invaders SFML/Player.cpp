@@ -22,21 +22,19 @@ void Player::pollEvents()
 	{
 		Sprite.move(-moveSpeed, 0.f);
 	}
-	collisions();
+	windowCollisions();
 }
 
 void Player::playerWin()
 {
 	std::cout << "WINNER!!!!!" << std::endl;
-	setSpeed(0);
-	gameOver = true;
+	stateManager::setState(2);
 }
 
 void Player::playerLose()
 {
 	std::cout << "LOSER!!!!!" << std::endl;
-	setSpeed(0);
-	gameOver = true;
+	stateManager::setState(3);
 }
 
 Player::~Player()

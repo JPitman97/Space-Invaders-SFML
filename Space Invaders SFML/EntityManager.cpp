@@ -36,7 +36,7 @@ void EntityManager::draw(sf::RenderWindow& window)
 	window.draw(Sprite);
 }
 
-bool EntityManager::collisions()
+bool EntityManager::windowCollisions()
 {
 	if (Sprite.getPosition().x <= 0) // Left side collision?
 	{
