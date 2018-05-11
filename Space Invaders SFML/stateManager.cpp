@@ -1,7 +1,7 @@
 #include "stateManager.h"
 
 
-static enum GAMESTATE { Menu, Game, Win, Loss };
+static enum GAMESTATE { Menu, Game, Win, Loss , Instructions};
 static GAMESTATE STATE;
 
 stateManager::stateManager()
@@ -25,6 +25,9 @@ std::string stateManager::getState()
 	case Loss:
 		return "Loss";
 		break;
+	case Instructions:
+		return "Instructions";
+		break;
 	default:
 		break;
 	}
@@ -45,6 +48,9 @@ void stateManager::setState(int state)
 		break;
 	case 3:
 		STATE = Loss;
+		break;
+	case 4:
+		STATE = Instructions;
 		break;
 	default:
 		std::cout << "Error setting state!" << std::endl;

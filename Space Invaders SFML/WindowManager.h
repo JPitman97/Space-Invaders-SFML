@@ -33,11 +33,23 @@ private:
 	sf::Sprite WinBackgroundSpr;
 	sf::Texture LossBackground;
 	sf::Sprite LossBackgroundSpr;
+	sf::Texture InstructionBackground;
+	sf::Sprite InstructionBackgroundSpr;
+	sf::Texture transparentBG;
+	sf::Sprite transparentSpr;
+	sf::Sprite transparentSpr2;
+	sf::Sprite transparentSpr3;
 
 	sf::Font font;
-	sf::Text text;
+	sf::Font menuFont;
+	sf::Text beginTxtBtn;
+	sf::Text InstructionsTxtBtn;
+	sf::Text EndTxtBtn;
+	sf::Text enemiesUI;
+	sf::Text fpsUI;
 	std::stringstream tempString;
 	std::string enemiesUiTxt;
+	std::string FPSUiTxt;
 
 	sf::Clock clock;
 	sf::Time time;
