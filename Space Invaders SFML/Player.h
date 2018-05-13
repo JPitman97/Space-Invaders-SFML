@@ -11,11 +11,13 @@ public:
 	Player();
 	~Player();
 
+	/*Method prototypes*/
 	void playerWin();
 	void playerLose();
+	void pollEvents() override; //This method is overridden from Entity Manager
 
+	/*Variable used to determin whether the player has fired*/
 	bool fire = false;
-	void pollEvents() override;
 
 private:
 	

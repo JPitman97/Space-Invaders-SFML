@@ -6,8 +6,9 @@ class EntityManager
 {
 public:
 	EntityManager();
-	virtual ~EntityManager() = 0;
+	virtual ~EntityManager() = 0; // Makes this class pure virtual (Abstract), meaning it cannot be instantiated on it's own
 
+	/*Method prototypes used for objects that inherit from this class, they are all virtual so that they can be overridden*/
 	virtual void init(std::string texLoc);
 	virtual void setPosition(float x, float y);
 	virtual sf::Vector2f getPosition();
@@ -19,6 +20,7 @@ public:
 	virtual void setSpeed(float speed) { moveSpeed = speed; };
 
 protected:
+	/*Protected variables for classes that inherit to use*/
 	sf::Sprite Sprite;
 	sf::Texture Texture;
 

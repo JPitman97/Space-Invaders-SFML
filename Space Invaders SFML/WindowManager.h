@@ -18,13 +18,15 @@ public:
 	~WindowManager();
 
 protected:
-	sf::RenderWindow window;
+	sf::RenderWindow window; //A new object for the game window
 
 private:
+	/*Parameters for the window*/
 	const uint16_t winWidth = 600;
 	const uint16_t winHeight = 800;
 	const std::string winTitle = "Space Invaders Clone!";
 
+	/*Variables for the background textures used for the game*/
 	sf::Texture Background;
 	sf::Sprite BackgroundSpr;
 	sf::Texture MenuBackground;
@@ -40,6 +42,7 @@ private:
 	sf::Sprite transparentSpr2;
 	sf::Sprite transparentSpr3;
 
+	/*Variables for the fonts and text objects used for the game*/
 	sf::Font font;
 	sf::Font menuFont;
 	sf::Text beginTxtBtn;
@@ -51,10 +54,11 @@ private:
 	std::string enemiesUiTxt;
 	std::string FPSUiTxt;
 
+	/*Variables to handle the clock and time*/
 	sf::Clock clock;
 	sf::Time time;
 
-
+	/*Objects of other classes this class requires*/
 	EventManager EM;
 	Player player;
 	Enemy1 enemy1;

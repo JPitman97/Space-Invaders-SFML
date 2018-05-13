@@ -1,7 +1,7 @@
 #include "AudioManager.h"
 
 
-
+/*This method loads in all thw audio required for the game and sets their volume and loop, it plays the background audio immeditately*/
 AudioManager::AudioManager()
 {
 	if (!BGMusic.openFromFile("Assets/Background-Music.wav"))
@@ -33,11 +33,13 @@ AudioManager::~AudioManager()
 {
 }
 
+/*This method plays the gun shot sound when the bullet is fired*/
 void AudioManager::playShotSound()
 {
 	shot.play();
 }
 
+/*This method plays the death sound when an enemy dies or the game is over*/
 void AudioManager::playDeathSound()
 {
 	death.play();

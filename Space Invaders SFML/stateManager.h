@@ -6,6 +6,7 @@ public:
 	stateManager();
 	~stateManager();
 
+	/*Method Prototypes*/
 	static std::string getState();
 	static void setState(int state);
 

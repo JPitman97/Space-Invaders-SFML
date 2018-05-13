@@ -8,9 +8,9 @@ public:
 	EventManager();
 	~EventManager();
 
-	void pollEvents(sf::RenderWindow &window, Player& player);
+	void pollEvents(sf::RenderWindow &window, Player& player); //Handles the events for firing and window closure
 
 private:
-	sf::Event event;
+	sf::Event event; // event variable
 };
 

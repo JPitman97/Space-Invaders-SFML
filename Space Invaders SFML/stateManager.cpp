@@ -1,14 +1,16 @@
 #include "stateManager.h"
 
-
+/*Creates the enum for the possible gamestates, then creates a variable of the same type*/
 static enum GAMESTATE { Menu, Game, Win, Loss , Instructions};
 static GAMESTATE STATE;
 
 stateManager::stateManager()
 {
+	//Sets the default state
 	STATE = Menu;
 }
 
+/*Handles getting the current game state to allow for switching views*/
 std::string stateManager::getState()
 {
 	switch (STATE)
@@ -29,10 +31,13 @@ std::string stateManager::getState()
 		return "Instructions";
 		break;
 	default:
+		return NULL;
 		break;
 	}
+	return NULL;
 }
 
+/*Allows for setting the state to be used for setting the views*/
 void stateManager::setState(int state)
 {
 	switch (state)
